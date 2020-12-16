@@ -21,7 +21,6 @@ namespace GuidantSurveyProject.Business_Info_Page
                 businessInfoPage._wait.Until(
                     ExpectedConditions.ElementIsVisible(By.XPath("//*[@class='card-title text-lg-center']")));
 
-
             Assert.AreEqual("Business - Guidant Business Financial Survey", businessInfoTitle);
             businessInfoPage.Dispose();
         }
@@ -63,6 +62,20 @@ namespace GuidantSurveyProject.Business_Info_Page
             businessInfoPage.Dispose();
         }
 
+
+        [TestMethod]
+        public void AccessBusinessInfoPage_ClickIDontKnowCheckbox_DisableFranchiseTextbox()
+        {
+            var businessInfoPage = new BusinessInfoPage();
+            businessInfoPage.OpenSpousePage("Illidan", "Stormrage", "a@a.com", "9199199191", "For the Horde, Inc");
+            businessInfoPage.OpenBusinessInfoPage("Mirana", "Moon", "a@a.com", "9198958597");
+            var selectFranchise = new SelectElement(businessInfoPage.BusinessTypeDropDown);
+            selectFranchise.SelectByText("Franchise");
+            businessInfoPage.IDontKnowFranshiseCheckBox.Click();
+
+            Assert.IsFalse(businessInfoPage.FranchiseNameTextBox.Enabled);
+            businessInfoPage.Dispose();
+        }
 
     }
 }

@@ -13,6 +13,8 @@ namespace GuidantSurveyProject.Business_Info_Page
 
         public IWebElement BusinessTypeDropDown => _driver.FindElement(By.Id("BusinessType"));
         public IWebElement FranchiseNameTextBox => _driver.FindElement(By.Id("FranchiseName"));
+        public IWebElement IDontKnowFranshiseCheckBox => _driver.FindElement(By.Id("UnknowFranchiseName"));
+
 
 
         public IWebElement FirstNameTextbox => _driver.FindElement(By.Id("FirstName"));
@@ -44,5 +46,7 @@ namespace GuidantSurveyProject.Business_Info_Page
             PrimaryPhoneTextbox.SendKeys(phone);          
             ContinueButton.Click();
         }
+
+     
     }
 }

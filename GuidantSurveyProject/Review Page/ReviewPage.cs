@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GuidantSurveyProject.Review_Page
-{ 
+{
     public class ReviewPage : Page
-    
     {
+
+
+        
+
+
         public IWebElement BusinessTypeDropDown => _driver.FindElement(By.Id("BusinessType"));
         public IWebElement FranchiseNameTextBox => _driver.FindElement(By.Id("FranchiseName"));
         public IWebElement FundOptionRadioStart => _driver.FindElement(By.XPath("//*[@class='form-check'][1]/input"));
@@ -26,7 +30,22 @@ namespace GuidantSurveyProject.Review_Page
         public IWebElement PrimaryPhoneTextbox => _driver.FindElement(By.Id("PrimaryPhone"));
         public IWebElement BusinessNameTextbox => _driver.FindElement(By.Id("BusinessName"));
         public IWebElement ContinueButton => _driver.FindElement(By.XPath("//*[@class='btn btn-success w-50']"));
+
+        internal void EnterNewProjCost(string newProjCost)
+        {
+            ProjectCostTextBox.Clear();
+            ProjectCostTextBox.SendKeys(newProjCost);
+
+        }
+
         public IWebElement ConfirmButton => _driver.FindElement(By.XPath("//*[@class='btn btn-success w-50']"));
+
+        public IWebElement EditContactInfoLink => _driver.FindElements(By.XPath("//strong"))[0];
+        public IWebElement EditSpouseInfoLink => _driver.FindElements(By.XPath("//strong"))[1];
+        public IWebElement EditBusinessInfoLink => _driver.FindElements(By.XPath("//strong"))[2];
+
+        public IWebElement reviewProjCostText => _driver.FindElements(By.XPath("//*[@class='text-muted']"))[2];
+
 
 
         public void OpenSpousePage(string fName, string lName, string email, string phone, string bName)
@@ -39,7 +58,7 @@ namespace GuidantSurveyProject.Review_Page
             PrimaryPhoneTextbox.SendKeys(phone);
             BusinessNameTextbox.SendKeys(bName);
             ContinueButton.Click();
-
+            
         }
 
         public void OpenBusinessInfoPage(string fName, string lName, string email, string phone)
@@ -52,14 +71,14 @@ namespace GuidantSurveyProject.Review_Page
         }
 
 
-        public void OpenReviewPage(string pCost)
+        public void OpenReviewPage(string franchise, string pCost, string fundTime)
         {
             var selectFranchise = new SelectElement(BusinessTypeDropDown);
-            selectFranchise.SelectByText("Independent");
+            selectFranchise.SelectByText(franchise);
             FundOptionRadioStart.Click();
             ProjectCostTextBox.SendKeys(pCost);
             var selectFunding = new SelectElement(FundingTimeLineDropDown);
-            selectFunding.SelectByText("Less than 2 months");
+            selectFunding.SelectByText(fundTime);
             ConfirmButton.Click();
 
 
