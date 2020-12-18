@@ -16,7 +16,6 @@ namespace GuidantSurveyProject.Business_Info_Page
         public IWebElement IDontKnowFranshiseCheckBox => _driver.FindElement(By.Id("UnknowFranchiseName"));
 
 
-
         public IWebElement FirstNameTextbox => _driver.FindElement(By.Id("FirstName"));
         public IWebElement LastNameTextbox => _driver.FindElement(By.Id("LastName"));
         public IWebElement EmailTextbox => _driver.FindElement(By.Id("Email"));

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace GuidantSurveyProject.Pages
@@ -15,6 +16,7 @@ namespace GuidantSurveyProject.Pages
     {
         public IWebDriver _driver;
         public WebDriverWait _wait;
+        public Actions _action;
 
 
         public Page()
@@ -22,6 +24,8 @@ namespace GuidantSurveyProject.Pages
             var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             _driver = new ChromeDriver(path);
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            _action = new Actions(_driver);
+            _driver.Manage().Window.Maximize();
         }
 
         public void Dispose()

@@ -7,13 +7,6 @@ namespace GuidantSurveyProject.Spouse_Page
     public class SpousePage : Page
     {
         
-
-        public SpousePage()
-            
-        {
-            
-        }
-
         public IWebElement FirstNameTextbox => _driver.FindElement(By.Id("FirstName"));
         public IWebElement LastNameTextbox => _driver.FindElement(By.Id("LastName"));
         public IWebElement EmailTextbox => _driver.FindElement(By.Id("Email"));

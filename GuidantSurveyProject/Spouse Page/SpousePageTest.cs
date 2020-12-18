@@ -35,7 +35,6 @@ namespace GuidantSurveyProject.Spouse_Page
         {
             var spousePage = new SpousePage();
             spousePage.OpenSpousePage("Illidan", "Stormrage", "a@a.com", "9199199191", "For the Horde, Inc");
-
             
 
             var welcomeBallTrackerColor = spousePage._wait.Until(ExpectedConditions.ElementExists(
